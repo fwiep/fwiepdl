@@ -1,0 +1,85 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: FWieP Download Service\n"
+"POT-Creation-Date: 2021-03-20 09:32+0100\n"
+"PO-Revision-Date: 2021-03-20 09:33+0100\n"
+"Last-Translator: Frans-Willem Post (FWieP) <fwiep@fwiep.nl>\n"
+"Language-Team: \n"
+"Language: nl\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: Poedit 2.4.2\n"
+"X-Poedit-Basepath: ../../..\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"X-Poedit-SearchPath-0: index.php\n"
+"X-Poedit-SearchPath-1: views\n"
+"X-Poedit-SearchPath-2: admin\n"
+"X-Poedit-SearchPath-3: src\n"
+
+#: index.php:65
+msgid "Failed to establish connection to database."
+msgstr "De verbinding met de databse is mislukt."
+
+#: index.php:77
+msgid "Specified page could not be found."
+msgstr "Gevraagde pagina is niet voorhanden."
+
+#: index.php:84
+msgid "Specified HTTP-method is not allowed."
+msgstr "Gevraagde HTTP-methode is niet toegestaan."
+
+#: index.php:91
+msgid "Nothing to see here, please move along."
+msgstr "Hier is niets te zien."
+
+#: index.php:99
+msgid "Download not found."
+msgstr "Download niet gevonden."
+
+#: index.php:112
+msgid "Download is not yet valid."
+msgstr "Download is nog niet geldig."
+
+#: index.php:119
+msgid "Download is no longer valid."
+msgstr "Download is niet langer geldig."
+
+#: views/client-header.php:25
+msgid "FWieP download service"
+msgstr "FWieP download service"
+
+#: views/client.php:26
+msgid "Language switcher"
+msgstr "Taalkeuze"
+
+#: views/client.php:46
+msgid "Your download should start automatically in "
+msgstr "Uw download start automatisch over "
+
+#: views/client.php:53
+msgid " seconds."
+msgstr " seconden."
+
+#: views/client.php:55
+msgid "If it doesn't, please "
+msgstr "Zo niet, "
+
+#: views/client.php:57
+msgid "start the download manually"
+msgstr "start de download dan handmatig"
+
+#: views/client.php:62
+msgid "."
+msgstr "."
+
+#: views/client.php:72
+msgid "An error occurred!"
+msgstr "Er is een fout opgetreden!"
+
+#: views/client.php:83
+msgid "Download"
+msgstr "Download"
+
+#~ msgid "follow this link"
+#~ msgstr "volg deze link"

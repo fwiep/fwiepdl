@@ -1,0 +1,35 @@
+Options -Indexes
+RewriteEngine on
+
+# =====================================================================
+
+# Live (production) rules, uncomment upon launch!
+#RewriteBase                "/"
+#RewriteRule .              -              [E=REWRITEBASE:/]
+#ErrorDocument 404 /index.php?error=404
+
+# =====================================================================
+
+# Local (development) rules, comment upon launch!
+RewriteBase                "/dl/"
+RewriteRule .              -              [E=REWRITEBASE:/dl/]
+ErrorDocument 404 /dl/index.php?error=404
+
+# =====================================================================
+
+# Exclude /vendor from public access
+RewriteRule ^vendor/? - [F,L]
+
+# If request is for index.php, an existing file or folder, stop processing
+RewriteCond %{REQUEST_URI} ^/index\.php [OR]
+RewriteCond %{REQUEST_FILENAME} -f [OR]
+RewriteCond %{REQUEST_FILENAME} -d
+RewriteRule . - [L]
+
+# Regular SEO rewriting
+RewriteRule ^admin/([^/]+)/?           admin/index.php?p=$1                  [L]
+RewriteRule ^([a-z]{2})/([^/]+)/(1)/?$ index.php?lang=$1&code=$2&trigger=$3  [L]
+RewriteRule ^([a-z]{2})/([^/]+)/?$     index.php?lang=$1&code=$2&trigger=0   [L]
+RewriteRule ^([^/]{5,})/(1)/?$         index.php?lang=&code=$1&trigger=$2    [L]
+RewriteRule ^([^/]{5,})/?$             index.php?lang=&code=$1&trigger=0     [L]
+RewriteRule ^([a-z]{2})/?$             index.php?lang=$1&code=&trigger=0     [L]

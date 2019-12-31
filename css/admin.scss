@@ -1,0 +1,22 @@
+$fw-white: #ffffff;
+$fw-yellow: hsl(60, 100%, 90%);
+$fw-green: #123b0e;
+
+$primary: $fw-green;
+$link-decoration: 'underline';
+
+$fa-font-path: "../fonts";
+// @import "../vendor/fortawesome/font-awesome/scss/brands";
+@import "../vendor/fortawesome/font-awesome/scss/solid";
+@import "../vendor/fortawesome/font-awesome/scss/fontawesome";
+
+@import "../vendor/twbs/bootstrap/scss/bootstrap";
+
+body{
+  margin-top: 1rem;
+  overflow-y: scroll;
+}
+.form-label em{
+  color: $red;
+  font-weight: bolder;
+}

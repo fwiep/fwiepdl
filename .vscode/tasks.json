@@ -1,0 +1,87 @@
+{
+  "version": "2.0.0",
+  "presentation": {
+    "echo": true,
+    "reveal": "silent",
+    "focus": false,
+    "panel": "shared",
+    "showReuseMessage": false
+  },
+  "tasks": [
+    {
+      "label": "Hash JS and CSS",
+      "type": "shell",
+      "command": "./scripts/postbuild.sh",
+      "args": [
+        "."
+      ],
+      "group": "build"
+    },
+    {
+      "label": "JS admin compile",
+      "command": "/usr/local/bin/uglifyjs",
+      "type": "shell",
+      "args": [
+        "-o",
+        "js/admin.min.js",
+        "--",
+        "vendor/twbs/bootstrap/dist/js/bootstrap.bundle.js",
+        "js/admin.js"
+      ],
+      "group": "build"
+    },
+    {
+      "label": "JS client compile",
+      "command": "/usr/local/bin/uglifyjs",
+      "type": "shell",
+      "args": [
+        "-o",
+        "js/client.min.js",
+        "--",
+        "vendor/twbs/bootstrap/dist/js/bootstrap.bundle.js",
+        "js/client.js"
+      ],
+      "group": "build"
+    },
+    {
+      "label": "CSS admin compile",
+      "command": "/usr/local/bin/sass",
+      "type": "shell",
+      "args": [
+        "--quiet",
+        "--no-source-map",
+        "--style",
+        "compressed",
+        "css/admin.scss",
+        "css/admin.min.css"
+      ],
+      "group": "build"
+    },
+    {
+      "label": "CSS client compile",
+      "command": "/usr/local/bin/sass",
+      "type": "shell",
+      "args": [
+        "--quiet",
+        "--no-source-map",
+        "--style",
+        "compressed",
+        "css/client.scss",
+        "css/client.min.css"
+      ],
+      "group": "build"
+    },
+    {
+      "label": "Build all",
+      "dependsOn": [
+        "JS admin compile",
+        "JS client compile",
+        "CSS admin compile",
+        "CSS client compile",
+        "Hash JS and CSS"
+      ],
+      "dependsOrder": "sequence",
+      "group": "build"
+    }
+  ]
+}

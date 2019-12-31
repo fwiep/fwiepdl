@@ -1,11 +1,26 @@
 {
     "name": "fwiep/dl",
-    "description": "Custom URL shortener",
+    "description": "Custom URL shortener and download service",
+    "type": "project",
+    "license": "GPL-3.0-or-later",
+    "require": {
+        "phpmailer/phpmailer": "^6.6"
+    },
+    "require-dev": {
+        "fortawesome/font-awesome": "^6.2",
+        "twbs/bootstrap": "^5.2"
+    },
     "authors": [
         {
             "name": "Frans-Willem Post",
-            "email": "fwiep@fwiep.nl"
+            "email": "fwiep@fwiep.nl",
+            "homepage": "https://www.fwiep.nl/",
+            "role": "developer"
         }
     ],
-    "require": {}
+    "autoload": {
+        "psr-4": {
+            "FWieP\\": "src"
+        }
+    }
 }
