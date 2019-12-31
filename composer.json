@@ -1,0 +1,11 @@
+{
+    "name": "fwiep/dl",
+    "description": "Custom URL shortener",
+    "authors": [
+        {
+            "name": "Frans-Willem Post",
+            "email": "fwiep@fwiep.nl"
+        }
+    ],
+    "require": {}
+}
