@@ -1,43 +1,43 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: FWieP Download Service\n"
-"POT-Creation-Date: 2021-03-20 09:29+0100\n"
-"PO-Revision-Date: 2021-03-20 09:31+0100\n"
+"POT-Creation-Date: 2022-09-14 22:53+0200\n"
+"PO-Revision-Date: 2022-09-14 23:02+0200\n"
 "Last-Translator: Frans-Willem Post (FWieP) <fwiep@fwiep.nl>\n"
 "Language-Team: \n"
 "Language: de\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Generator: Poedit 2.4.2\n"
-"X-Poedit-Basepath: ../../..\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"X-Generator: Poedit 3.1.1\n"
+"X-Poedit-Basepath: ../../..\n"
 "X-Poedit-SearchPath-0: index.php\n"
 "X-Poedit-SearchPath-1: views\n"
 "X-Poedit-SearchPath-2: admin\n"
 "X-Poedit-SearchPath-3: src\n"
 
-#: index.php:65
+#: index.php:72
 msgid "Failed to establish connection to database."
 msgstr "Verbindung zur Datenbank konnte nicht hergestellt werden."
 
-#: index.php:77
+#: index.php:81
 msgid "Specified page could not be found."
 msgstr "Die angegebene Seite wurde nicht gefunden."
 
-#: index.php:84
+#: index.php:87
 msgid "Specified HTTP-method is not allowed."
 msgstr "Die angegebene HTTP-Methode ist nicht zulässig."
 
-#: index.php:91
+#: index.php:93
 msgid "Nothing to see here, please move along."
 msgstr "Hier gibt es nichts zu sehen, bitte gehen Sie weiter."
 
-#: index.php:99
+#: index.php:100
 msgid "Download not found."
 msgstr "Download nicht gefunden."
 
-#: index.php:112
+#: index.php:113
 msgid "Download is not yet valid."
 msgstr "Der Download ist noch nicht gültig."
 
@@ -45,41 +45,45 @@ msgstr "Der Download ist noch nicht gültig."
 msgid "Download is no longer valid."
 msgstr "Der Download ist nicht mehr gültig."
 
-#: views/client-header.php:25
+#: views/client-header.php:26
 msgid "FWieP download service"
 msgstr "FWieP Download Service"
 
-#: views/client.php:26
+#: views/client.php:24
 msgid "Language switcher"
 msgstr "Sprachauswahl"
 
-#: views/client.php:46
+#: views/client.php:44
 msgid "Your download should start automatically in "
 msgstr "Ihr Download sollte automatisch starten in "
 
-#: views/client.php:53
+#: views/client.php:51
 msgid " seconds."
 msgstr " Sekunden."
 
-#: views/client.php:55
+#: views/client.php:53
 msgid "If it doesn't, please "
 msgstr "Wenn nicht, bitte "
 
-#: views/client.php:57
+#: views/client.php:55
 msgid "start the download manually"
 msgstr "den Download manuell starten"
 
-#: views/client.php:62
+#: views/client.php:60
 msgid "."
 msgstr "."
 
-#: views/client.php:72
+#: views/client.php:70
 msgid "An error occurred!"
 msgstr "Ein Fehler ist aufgetreten!"
 
-#: views/client.php:83
+#: views/client.php:81
 msgid "Download"
 msgstr "Download"
+
+#: views/client.php:87
+msgid "Fork me on GitHub"
+msgstr "Quellcode auf GitHub"
 
 #~ msgid "follow this link"
 #~ msgstr "folgen Sie diesem Link"

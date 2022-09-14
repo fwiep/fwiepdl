@@ -83,5 +83,7 @@ require_once __DIR__.'/client-header.php';
 
   </main>
 </div>
+<a target="_blank" id="gitbanner" href="https://github.com/fwiep/fwiepdl"
+  ><?php print _('Fork me on GitHub') ?></a>
 <?php
 require_once __DIR__.'/client-footer.php';

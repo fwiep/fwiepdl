@@ -2,3 +2,48 @@ $link-color: black;
 $link-decoration: underline;
 
 @import "../vendor/twbs/bootstrap/scss/bootstrap";
+
+// Source: https://gist.github.com/PretorDH/6148502
+#gitbanner {
+    background-color: #a00;
+    color: #fff;
+
+    display: block;
+    position: fixed;
+    z-index: 10;
+    right: -5.75em;
+    bottom: 3em;
+    padding: 0.30em 5em 0.50em 4em;
+
+    -webkit-transform: rotate(-45deg) scale(0.75, 1);
+    -webkit-box-shadow: 0 0 1em #888;
+    -webkit-text-shadow: 0 0 0.75em #444;
+
+    -moz-transform: rotate(-45deg) scale(0.75, 1);
+    -moz-box-shadow: 0 0 1em #888;
+    -moz-text-shadow: 0 0 0.75em #444;
+
+    transform: rotate(-45deg) scale(0.75, 1);
+    box-shadow: 0 0 1em #888;
+    text-shadow: 0 0 0.75em #444;
+
+    font: bold 15.6px Frutiger, "Frutiger Linotype", Univers, Calibri, "Gill Sans", "Gill Sans MT", "Myriad Pro", Myriad, "DejaVu Sans Condensed", "Liberation Sans", "Nimbus Sans L", Tahoma, Geneva, "Helvetica Neue", Helvetica, Arial, sans serif;
+    text-align: center;
+    text-decoration: none;
+    letter-spacing: .1em;
+}
+
+#gitbanner:hover {
+    color: aqua
+}
+
+#gitbanner::before {
+    content: '';
+    position: absolute;
+    top: 1px;
+    bottom: 1px;
+    left: 0;
+    right: 0;
+    border: 1px #faa dashed;
+    margin: 0.05em 0 0.075em 0;
+}
