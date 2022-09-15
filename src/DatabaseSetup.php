@@ -29,6 +29,7 @@ if (!defined('_FWIEPEXEC')) {
 final class DatabaseSetup
 {
     const SETUP_SQL_FILE = __DIR__.'/../setup.sql';
+    const DATA_SQL_FILE = __DIR__.'/../data.sql';
 
     /**
      * Private constructor to prevent instantiation
@@ -48,6 +49,12 @@ final class DatabaseSetup
             return false;
         }
         $pdo = RD::g()->pdo;
-        return ($pdo->exec(file_get_contents(self::SETUP_SQL_FILE)) !== false);
+        $ok = ($pdo->exec(file_get_contents(self::SETUP_SQL_FILE)) !== false);
+
+        if (file_exists(self::DATA_SQL_FILE)) {
+            $ok = $ok &&
+                ($pdo->exec(file_get_contents(self::DATA_SQL_FILE)) !== false);
+        }
+        return $ok;
     }
 }
