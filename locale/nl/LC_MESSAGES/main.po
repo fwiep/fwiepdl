@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: FWieP Download Service\n"
 "POT-Creation-Date: 2022-09-14 22:59+0200\n"
-"PO-Revision-Date: 2022-09-14 23:03+0200\n"
+"PO-Revision-Date: 2022-10-10 17:25+0200\n"
 "Last-Translator: Frans-Willem Post (FWieP) <fwiep@fwiep.nl>\n"
 "Language-Team: \n"
 "Language: nl\n"
@@ -19,15 +19,15 @@ msgstr ""
 
 #: index.php:72
 msgid "Failed to establish connection to database."
-msgstr "De verbinding met de databse is mislukt."
+msgstr "De verbinding met de database is mislukt."
 
 #: index.php:81
 msgid "Specified page could not be found."
-msgstr "Gevraagde pagina is niet voorhanden."
+msgstr "De gevraagde pagina is niet voorhanden."
 
 #: index.php:87
 msgid "Specified HTTP-method is not allowed."
-msgstr "Gevraagde HTTP-methode is niet toegestaan."
+msgstr "De gevraagde HTTP-methode is niet toegestaan."
 
 #: index.php:93
 msgid "Nothing to see here, please move along."
