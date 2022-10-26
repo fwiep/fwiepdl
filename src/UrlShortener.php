@@ -524,7 +524,7 @@ class UrlShortener
                 AND
                 (:short IS NULL OR `short_url` = :short )
             ORDER BY
-                `created` DESC;",
+                `file_name` ASC;",
             self::$table
         );
         $stmt = RD::g()->pdo->prepare($query);

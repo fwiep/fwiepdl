@@ -144,7 +144,7 @@ ready(() => {
     // Loop through all copy-buttons
     document.querySelectorAll('.btn-copy').forEach((b) => {
         b.addEventListener('click', (ev) => {
-            let dllink =  b.parentElement.parentElement.querySelector('.dl-link');
+            let dllink =  b.parentElement.parentElement.parentElement.parentElement.querySelector('.dl-link');
             navigator.clipboard.writeText(dllink.href);
         });
     });
@@ -152,7 +152,7 @@ ready(() => {
     // Loop through all download-buttons
     document.querySelectorAll('.btn-download').forEach((b) => {
         b.addEventListener('click', (ev) => {
-            let dllink =  b.parentElement.parentElement.querySelector('.dl-link');
+            let dllink =  b.parentElement.parentElement.parentElement.parentElement.querySelector('.dl-link');
             dllink.dispatchEvent(new MouseEvent('click'));
         });
     });
@@ -160,7 +160,7 @@ ready(() => {
     // Loop through all edit-buttons
     document.querySelectorAll('.btn-edit').forEach((b) => {
         b.addEventListener('click', (ev) => {
-            let d = JSON.parse(b.parentElement.dataset.obj);
+            let d = JSON.parse(b.parentElement.parentElement.parentElement.dataset.obj);
             let ilf = document.getElementById('inpLocalFile');
             let irof = document.getElementById('inpReadOnlyFilename');
 
@@ -190,7 +190,7 @@ ready(() => {
     // Loop through all delete-buttons
     document.querySelectorAll('.btn-delete').forEach((b) => {
         b.addEventListener('click', (ev) => {
-            let d = JSON.parse(b.parentElement.dataset.obj);
+            let d = JSON.parse(b.parentElement.parentElement.parentElement.dataset.obj);
             d.cmd = 'delete';
             d.inpType = 'dummy';
             d._token = document.querySelector('form input[name="_token"]').value;
@@ -200,7 +200,7 @@ ready(() => {
                 'body': JSON.stringify(d)
             }).then(resp => {
                 if (resp.ok) {
-                    b.parentElement.parentElement.parentElement.remove();
+                    b.parentElement.parentElement.parentElement.parentElement.remove();
                 }
             }).catch(er => {
                 // Oops, something went wrong
@@ -210,21 +210,21 @@ ready(() => {
     });
 
     // Hookup string filter search box
-    let filterUrl = document.getElementById('filterUrl');
-    let lis = document.querySelectorAll('.list-group-item');
+    let filter = document.getElementById('filter');
+    let trs = document.querySelectorAll('table tbody tr');
 
-    if (filterUrl) {
-        filterUrl.addEventListener('keyup', (e) => {
+    if (filter) {
+        filter.addEventListener('keyup', (e) => {
             var v = e.target.value.toLowerCase();
 
-            for (let li of lis) {
-                var licontent = li.innerHTML;
+            for (let tr of trs) {
+                var trcontent = tr.innerHTML;
         
-                // If the filter value is present in the li's content...
-                if (licontent.toLowerCase().indexOf(v) > -1) {
-                    li.classList.remove('d-none');
+                // If the filter value is present in the tr's content...
+                if (trcontent.toLowerCase().indexOf(v) > -1) {
+                    tr.classList.remove('d-none');
                 } else {
-                    li.classList.add('d-none');
+                    tr.classList.add('d-none');
                 }
             }
         });

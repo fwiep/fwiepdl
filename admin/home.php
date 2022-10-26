@@ -11,6 +11,7 @@
  * @link     https://www.fwiep.nl/
  */
 use FWieP as F;
+use FWieP\App as A;
 
 if (!defined('_FWIEPEXEC')) {
     http_response_code(400);
@@ -204,82 +205,95 @@ if (!in_array($_SERVER['REQUEST_METHOD'], ['GET', 'POST'])) {
     header($_SERVER['SERVER_PROTOCOL'].' 405 Method Not Allowed');
     exit;
 }
-$o = '';
+$p = '';
 $urls = F\UrlShortener::getUrls();
 
 foreach ($urls as $u) {
     $lis = [];
-    $lis[] = sprintf('Type: %s', $u->getIsLocal() ? 'LOCAL' : 'EXTERNAL');
-    $lis[] = sprintf('Downloads: %d', $u->getDownloadCount());
-    $lis[] = sprintf(
-        'Short code: <a class="dl-link" target="_blank" href="%1$s%2$s"
-          >%2$s</a>',
-        F\App::getHrefBase(),
-        htmlspecialchars($u->getShortUrl())
-    );
-    if ($u->getLongUrl()) {
-        $lis[] = sprintf(
-            'Long URL: <a href="%1$s" target="_blank">%1$s</a>',
-            htmlspecialchars($u->getLongUrl())
-        );
-    }
+    $lis[] = sprintf('UUID: %s', $u->getUuid());
+    $lis[] = sprintf('Created: %s', $u->getCreated()->format('Y-m-d H:i:s'));
+
     if ($u->getValidFrom()) {
         $lis[] = sprintf(
             'Valid from: %s',
-            $u->getValidFrom()->format('Y-m-d H:i:s')
+            $u->getValidFrom()->format('Y-m-d')
         );
     }
     if ($u->getValidUntil()) {
         $lis[] = sprintf(
             'Valid until: %s',
-            $u->getValidUntil()->format('Y-m-d H:i:s')
+            $u->getValidUntil()->format('Y-m-d')
         );
     }
     if ($u->getIsLocal()) {
-        $lis[] = sprintf(
-            'Original filename: %s%s',
-            htmlspecialchars($u->getFileName()),
-            htmlspecialchars($u->getFileExtension())
-        );
         $lis[] = sprintf(
             'MIME-type: %s (%s)',
             htmlspecialchars($u->getMimeType()),
             htmlspecialchars($u->getMimeEncoding())
         );
-        $lis[] = sprintf(
-            'Filesize: %s',
-            htmlspecialchars(F\App::formatBytes($u->getFileSize()))
+    }
+    $aLink = sprintf(
+        '<a class="dl-link" target="_blank" href="%1$s%2$s">%2$s</a>',
+        A::getHrefBase(),
+        htmlspecialchars($u->getShortUrl())
+    );
+    $p .= '<tr>';
+
+    if ($u->getIsLocal()) {
+        $p .= sprintf(
+            '<td>%1$s%2$s
+            <a class="ms-2 align-middle" href="#info%3$s" data-bs-toggle="collapse"
+              role="button" aria-expanded="false" aria-controls="info%3$s">
+              <span class="fa fa-circle-info"></span>
+              <span class="visually-hidden">show info</span>
+            </a>
+            <div class="collapse ps-3" id="info%3$s">%4$s</div>
+            </td>',
+            htmlspecialchars($u->getFileName()),
+            htmlspecialchars($u->getFileExtension()),
+            $u->getId(),
+            join('<br />', $lis)
+        );
+        $p .= sprintf('<td>%s</td>', $aLink);
+        $p .= sprintf(
+            '<td>%s</td>',
+            htmlspecialchars(A::formatBytes($u->getFileSize()))
+        );
+    } else {
+        $p .= sprintf(
+            '<td>%s</td>',
+            htmlspecialchars($u->getLongUrl())
+        );
+        $p .= sprintf('<td>%s</td>', $aLink);
+        $p .= sprintf(
+            '<td>%s</td>',
+            'n/a'
         );
     }
-    //$lis[] = sprintf('Created: %s', $u->getCreated()->format('Y-m-d H:i:s'));
-    //$lis[] = sprintf('UUID: %s', $u->getUuid());
-    
-    $o .= sprintf(
-        '<div class="list-group-item">
-          <div class="row align-items-center">
-            <ul class="col-sm-8 ps-4 mb-0">
-              %1$s
-            </ul>
-            <div class="col-sm-4" data-obj=\'%2$s\'>
-             <button class="btn btn-primary btn-copy"
-               >Copy</button>
-             <button class="btn btn-primary btn-download" data-cmd="download"
-               >Download</button>
-             <button class="btn btn-primary btn-edit" data-cmd="edit"
-               >Edit</button>
-             <button class="btn btn-danger btn-delete" data-cmd="delete"
-               >Delete</button>
+    $p .= sprintf(
+        '<td>%d</td>',
+        $u->getDownloadCount()
+    );
+    $p .= sprintf(
+        '<td data-obj=\'%s\'>
+          <div class="btn-toolbar float-end" role="toolbar" aria-label="Actions">
+            <div class="btn-group me-2" role="group" aria-label="Copy/Download">
+              <button class="btn btn-sm btn-primary btn-copy"
+                >Copy</button>
+              <button class="btn btn-sm btn-primary btn-download" data-cmd="download"
+                >Download</button>
+            </div>
+            <div class="btn-group me-2" role="group" aria-label="Edit/Delete">
+              <button class="btn btn-sm btn-primary btn-edit" data-cmd="edit"
+                >Edit</button>
+              <button class="btn btn-sm btn-danger btn-delete" data-cmd="delete"
+                >Delete</button>
             </div>
           </div>
-        </div>',
-        array_reduce(
-            $lis,
-            function ($c, $i) {
-                return $c.'<li>'.$i.'</li>';
-            }
-        ),
+        </td>',
         str_replace("'", "&#39;", json_encode($u->getProps()))
     );
+    $p .= '</tr>';
 }
 $oMinValidFrom = new \DateTime();
 $oMinValidFrom = $oMinValidFrom->format('Y-m-d');
@@ -387,7 +401,7 @@ require_once __DIR__.'/../views/admin-header.php';
         value="<?php print parseSize(ini_get('upload_max_filesize')) ?>" />
       <input type="file" class="form-control collapse show" id="inpLocalFile">
       <small class="form-text text-muted">The maximum allowed filesize is <?php
-          print F\App::formatBytes(parseSize(ini_get('upload_max_filesize')))
+          print A::formatBytes(parseSize(ini_get('upload_max_filesize')))
         ?>.</small>
       
     </div>
@@ -406,13 +420,26 @@ require_once __DIR__.'/../views/admin-header.php';
 </form>
 
 <div class="mb-4">
-<label for="filterUrl" class="visually-hidden">Filter results</label>
-<input class="form-control" id="filterUrl" name="filterUrl"
+<label for="filter" class="visually-hidden">Filter results</label>
+<input class="form-control" id="filter" name="filter"
   type="text" placeholder="Search...">
 </div>
 
-<div class="list-group">
-  <?php print $o ?>
+<div class="table-responsive">
+<table class="table table-striped table-hover table-sm">
+  <caption>List of downloads/redirects</caption>
+  <thead>
+    <tr>
+      <th>Filename / target</th>
+      <th>Shortcode</th>
+      <th>Size</th>
+      <th colspan="2">Downloads</th>
+    </tr>
+  </thead>
+  <tbody>
+    <?php print $p ?>
+  </tbody>
+</table>
 </div>
 
 </main>
