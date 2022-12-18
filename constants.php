@@ -15,11 +15,11 @@ if (!defined('_FWIEPEXEC')) {
     die('No direct access!');
 }
 define('MD5_ICO', 'f3443eeadd503ddf2a37028101016c74');
-define('MD5_ADMIN_JS', 'ba24db30e7e55cc9262952fdc479857d');
-define('SHA_ADMIN_JS', 'sha384-M/pIpLr7K8o2EtgbYWqPeTCcyiuHHq4Kix8O5xnurB6/SyMP8cYSet073TTACyxk');
-define('MD5_ADMIN_CSS', '53d7966e852470884df09c99f6b8a5ed');
-define('SHA_ADMIN_CSS', 'sha384-Xwe9xzQHoJY7H918jShLFcJ2rI5V8bRzBaLxB8+RSzIfNlX3HfucT+A/UFWGw+aN');
-define('MD5_CLIENT_JS', 'a8b4a167b9e706c33c7dfcc4df82d76b');
-define('SHA_CLIENT_JS', 'sha384-3ZzRBtSuvXQSwvhKwK1wG55p6kL3Aw3ULagQasDBru07n1IXKy7H3OfPAhdOZ3o1');
-define('MD5_CLIENT_CSS', '096b24437d520398a630dfd0b274a783');
-define('SHA_CLIENT_CSS', 'sha384-zXmpov4ALowiI8ElqFfKYoW82wNzkXTg/huRzhEBxrchfPRw7+3yE3YrrP2o5V/4');
+define('MD5_ADMIN_JS', 'c5108dd09eb4c10ebbb0733fda182c0b');
+define('SHA_ADMIN_JS', 'sha384-AnYMKLUnMfFo0T+LATpPBODm764SpZ6qG/yP0uJsmgaEckzB1UyuaChLqjY6yalR');
+define('MD5_ADMIN_CSS', 'db7ea0c8bd522f1736685b692cc046ca');
+define('SHA_ADMIN_CSS', 'sha384-BxrQ5UZXzrWPPdmDsp/neCz3h5ypsITRMdLUYZLowF3huL/ypl50cLBsirGu1wPk');
+define('MD5_CLIENT_JS', '21ad8a49d8d6992532231a1e55021012');
+define('SHA_CLIENT_JS', 'sha384-i4c1GpXU0qSze6TZ1RCDTGnN77yZGQKLELZD9vD6jHjDcLfE7yD95EfJ5JGAmzvz');
+define('MD5_CLIENT_CSS', 'af4613074f194cdd2556c7b06e27c0b6');
+define('SHA_CLIENT_CSS', 'sha384-GSRh2jlGqDOFUsmaLxfcceWp86IxKMnJyWlpiW91fL8tvWzgvaE2X/KAu27Eb/77');
