@@ -27,7 +27,7 @@ if (!defined('_FWIEPEXEC')) {
     <link rel="stylesheet"
       href="css/client.min.css?v=<?php print MD5_CLIENT_CSS ?>"
       integrity="<?php print SHA_CLIENT_CSS ?>" />
-    <?php require_once '../views/favicon-stuff.php'; ?>
+    <?php require_once 'views/favicon-stuff.php'; ?>
     <script>var fwiepdl = {
       'download_timeout': <?php print DOWNLOAD_TIMEOUT ?> }</script>
   </head>
