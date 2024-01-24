@@ -16,11 +16,7 @@ if (!defined('_FWIEPEXEC')) {
     http_response_code(400);
     die('No direct access!');
 }
-$prefix = App::getHrefBase();
-
-if (defined('_FWIEPADMIN')) {
-    $prefix .= '../';
-}?>
+$prefix = App::getHrefBase();?>
 
 <link rel="apple-touch-icon" sizes="180x180"
   href="<?php print $prefix ?>apple-touch-icon.png?v=3" />
