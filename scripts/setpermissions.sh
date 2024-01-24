@@ -3,28 +3,16 @@
 # Set correct owner, group, permissions and SELinux contexts
 # for all the project's folders and files.
 #
-USAGE="Usage: ${0} <root-directory>";
-
-# Check correct amount of arguments
-if [ ${#} -ne 1 ]; then
-  echo "${USAGE}" >&2;
-  exit 1;
-fi
-
-# Check if passed argument is directory
-if [ ! -d "${1}" ]; then
-  echo -n "Passed argument is not a directory." >&2;
-  exit 2;
-fi
+USAGE="Usage: ${0}";
 
 # Make sure only root can run our script
 if [[ ${EUID} -ne 0 ]]; then
    echo "This script must be run as root." >&2;
-   exit 3;
+   exit 1;
 fi
 
 # Prepare variables
-DIR="${1}";
+DIR="$( realpath $( dirname ${0} )/../ )";
 USERNAME="fwiep";
 GROUPNAME="apache"
 ONFEDORA="y";
@@ -35,9 +23,6 @@ if [ ! -f "/etc/redhat-release" ]; then
   GROUPNAME="www-data";
   ONFEDORA="n";
 fi
-
-# Copy font-awesome fonts out of ./vendor
-cp -f "${DIR}/vendor/fortawesome/font-awesome/webfonts/"* "${DIR}/fonts"
 
 # Set owner:group for all files and folders
 sudo chown -R "${USERNAME}":"${GROUPNAME}" "${DIR}";

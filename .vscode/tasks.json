@@ -12,9 +12,7 @@
       "label": "Hash JS and CSS",
       "type": "shell",
       "command": "./scripts/postbuild.sh",
-      "args": [
-        "."
-      ],
+      "args": [],
       "group": "build"
     },
     {
