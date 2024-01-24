@@ -26,8 +26,7 @@ if (!defined('_FWIEPEXEC')) {
     <link rel="stylesheet"
       href="css/admin.min.css?v=<?php print MD5_ADMIN_CSS ?>"
       integrity="<?php print SHA_ADMIN_CSS ?>" />
-    <link rel="icon" type="image/png"
-      href="favicon.png?v=<?php print MD5_ICO ?>">
+    <?php require_once '../views/favicon-stuff.php'; ?>
   </head>
   <body>
   

@@ -14,7 +14,6 @@ if (!defined('_FWIEPEXEC')) {
     http_response_code(400);
     die('No direct access!');
 }
-define('MD5_ICO', 'f3443eeadd503ddf2a37028101016c74');
 define('MD5_ADMIN_JS', '7fe4eb61f4d92ffcac5e4b89072ea30b');
 define('SHA_ADMIN_JS', 'sha384-0D8yl9bUajjOFuGpADPr8LuujL5Nt4HBGvqEvWLwbt4RLpbmSqSyGX96KZctXjIL');
 define('MD5_ADMIN_CSS', '7b14874c2e76cba0c5e0549dea65d6a8');

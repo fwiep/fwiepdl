@@ -10,7 +10,7 @@
  * @license  https://www.gnu.org/copyleft/gpl.html GNU General Public License
  * @link     https://www.fwiep.nl/
  */
-use FWieP as F;
+use FWieP\App;
 
 if (!defined('_FWIEPEXEC')) {
     http_response_code(400);
@@ -20,15 +20,14 @@ if (!defined('_FWIEPEXEC')) {
 <html lang="<?php print $lang ?>" class="h-100">
   <head>
     <meta charset="utf-8" />
-    <base href="<?php print F\App::getHrefBase() ?>" />
+    <base href="<?php print App::getHrefBase() ?>" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="robots" content="noindex" />
     <title><?php print _('FWieP download service') ?></title>
     <link rel="stylesheet"
       href="css/client.min.css?v=<?php print MD5_CLIENT_CSS ?>"
       integrity="<?php print SHA_CLIENT_CSS ?>" />
-    <link rel="icon" type="image/png"
-      href="favicon.png?v=<?php print MD5_ICO ?>">
+    <?php require_once '../views/favicon-stuff.php'; ?>
     <script>var fwiepdl = {
       'download_timeout': <?php print DOWNLOAD_TIMEOUT ?> }</script>
   </head>
