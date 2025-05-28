@@ -516,7 +516,7 @@ class UrlShortener
      * 
      * @return \FWieP\UrlShortener[]
      */
-    public static function getUrls(string $uuid = null, string $shortUrl = null)
+    public static function getUrls(?string $uuid = null, ?string $shortUrl = null)
     {
         $query = sprintf(
             "SELECT * FROM `%1\$s` WHERE
