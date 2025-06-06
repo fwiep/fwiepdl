@@ -71,6 +71,9 @@ class App
     {
         $isSecure = ($_SERVER['SERVER_PORT'] == 443);
         $isSecure = $isSecure ||
+            (array_key_exists('HTTP_X_FORWARDED_PORT', $_SERVER)
+            && $_SERVER['HTTP_X_FORWARDED_PORT'] == 443);
+        $isSecure = $isSecure ||
             (!empty($_SERVER['HTTPS']) && $_SERVER['HTTPS'] != 'off');
         
         return sprintf(

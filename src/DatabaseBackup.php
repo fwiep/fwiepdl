@@ -115,7 +115,7 @@ final class DatabaseBackup
                 $row1 = reset($rowChunk);
                 $sql_insert = '';
                 foreach ($row1 as $k => $v) {
-                    $sql_insert .= "`${k}`,";
+                    $sql_insert .= "`{$k}`,";
                 }
                 $sql_insert = substr($sql_insert, 0, -1);
                 $o .= $sql_insert;

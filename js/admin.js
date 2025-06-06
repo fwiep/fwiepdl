@@ -104,16 +104,24 @@ ready(() => {
             }
             function transferComplete(e) {
                 if (req.readyState == req.DONE) {
-                    resetForm();
-                    const resp = JSON.parse(req.response);
+                    if (req.status == 200) {
+                        
+                        resetForm();
+                        const resp = JSON.parse(req.response);
 
-                    if (resp.result == true) {
-                        location.reload();
+                        if (resp.result == true) {
+                            location.reload();
+                        } else {
+                            document.getElementById('modaltitle').textContent = 'Error';
+                            document.getElementById('uploadmsg').classList.remove('show');
+                            document.getElementById('errormsg').classList.add('show');
+                            document.getElementById('errormsg').innerHTML = '<p>'+resp.error+'</p>';
+                        }
                     } else {
                         document.getElementById('modaltitle').textContent = 'Error';
                         document.getElementById('uploadmsg').classList.remove('show');
                         document.getElementById('errormsg').classList.add('show');
-                        document.getElementById('errormsg').innerHTML = '<p>'+resp.error+'</p>';
+                        document.getElementById('errormsg').innerHTML = '<p>HTTP '+req.status+' '+req.statusText+'</p>';
                     }
                 }
             }
